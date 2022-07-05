@@ -107,14 +107,14 @@ const SignupPage = () => {
                 تسجيل
               </Button>
             </Stack>
-            <Stack pt={6}>
-              <Text align={"center"}>
-                لديك حساب بالفعل؟{" "}
-                <Link as={ReachLink} to="/login" color={"blue.400"}>
-                  تسجيل الدخول
-                </Link>
-              </Text>
-            </Stack>
+                <Stack pt={6}>
+                <Text align={"center"}>
+                    لديك حساب بالفعل؟{" "}
+                    <Link as={ReachLink} to="/login" color={"blue.400"}>
+                    تسجيل الدخول
+                    </Link>
+                </Text>
+                </Stack>
           </Stack>
         </Box>
       </Stack>
