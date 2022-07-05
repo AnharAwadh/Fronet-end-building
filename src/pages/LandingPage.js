@@ -15,6 +15,11 @@ import {
   useBreakpointValue,
   useDisclosure,
   HStack,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -22,7 +27,10 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
+import Avatar from "react-avatar";
+
 import { Link as ReachLink } from "react-router-dom";
+import { useState } from "react";
 const goTo = (tag) => {
   document.getElementById(tag).scrollIntoView({
     behavior: "smooth",
@@ -44,7 +52,7 @@ const NavLink = ({ children, tag }) => (
 );
 export default function LandingPage({ Links }) {
   const { isOpen, onToggle } = useDisclosure();
-
+  const [isLogged, setLogged] = useState(false);
   return (
     <Box>
       <Flex
@@ -79,36 +87,62 @@ export default function LandingPage({ Links }) {
           </HStack>
         </Flex>
 
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={"flex-end"}
-          direction={"row"}
-          spacing={6}
-        >
-          <Button
-            as={"a"}
-            fontSize={"sm"}
-            fontWeight={400}
-            variant={"link"}
-            href={"#"}
+        {!isLogged ? (
+          <Stack
+            flex={{ base: 1, md: 0 }}
+            justify={"flex-end"}
+            direction={"row"}
+            spacing={6}
           >
-            تسجيل الدخول
-          </Button>
-          <Button
-            display={{ base: "none", md: "inline-flex" }}
-            borderRadius={"1px"}
-            fontSize={"sm"}
-            fontWeight={600}
-            color={"white"}
-            bg={"#5E5542"}
-            href={"#"}
-            _hover={{
-              bg: "#5E5542",
-            }}
-          >
-            انشاء حساب
-          </Button>
-        </Stack>
+            <Button
+              as={"a"}
+              fontSize={"sm"}
+              fontWeight={400}
+              variant={"link"}
+              href={"#"}
+            >
+              تسجيل الدخول
+            </Button>
+            <Button
+              display={{ base: "none", md: "inline-flex" }}
+              borderRadius={"1px"}
+              fontSize={"sm"}
+              fontWeight={600}
+              color={"white"}
+              bg={"#5E5542"}
+              href={"#"}
+              _hover={{
+                bg: "#5E5542",
+              }}
+            >
+              انشاء حساب
+            </Button>
+          </Stack>
+        ) : (
+          <Flex alignItems={"center"}>
+            <Menu>
+              <MenuButton
+                as={Button}
+                rounded={"full"}
+                variant={"link"}
+                cursor={"pointer"}
+                minW={0}
+              >
+                <Avatar name="Anhar" color="#5E5542" size="40" round={true} />
+              </MenuButton>
+              <MenuList>
+                <MenuItem as={ReachLink} to="/profile">
+                  بياناتي
+                </MenuItem>
+                <MenuItem>موعيدي</MenuItem>
+                <MenuItem>حجز خدمة</MenuItem>
+                <MenuDivider />
+                <MenuDivider />
+                <MenuItem>تسجيل خروج</MenuItem>
+              </MenuList>
+            </Menu>
+          </Flex>
+        )}
       </Flex>
     </Box>
   );
