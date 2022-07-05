@@ -1,27 +1,27 @@
-import React from 'react'
+import React from "react";
 import {
-    Flex,
-    Box,
-    FormControl,
-    FormLabel,
-    Input,
-    InputGroup,
-    HStack,
-    InputRightElement,
-    Stack,
-    Button,
-    Heading,
-    Text,
-    useColorModeValue,
-    Link,
-    useRadioGroup,
-  } from "@chakra-ui/react";
-  import { useState } from "react";
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  HStack,
+  InputRightElement,
+  Stack,
+  Button,
+  Heading,
+  Text,
+  useColorModeValue,
+  Link,
+  useRadioGroup,
+} from "@chakra-ui/react";
+import { useState } from "react";
 import { Link as ReachLink } from "react-router-dom";
+import Avatar from "react-avatar";
 
 const Profile = () => {
   return (
-
     <Flex
       minH={"100vh"}
       align={"center"}
@@ -35,6 +35,15 @@ const Profile = () => {
           boxShadow={"lg"}
           p={8}
         >
+          <Flex
+            alignItems="center"
+            minWidth="max-content"
+            justifyContent="center"
+          >
+            <Box mt="-4rem" mb="2rem">
+              <Avatar name="Anhar" color="#5E5542" size="70" round={true} />
+            </Box>
+          </Flex>
           <Stack spacing={4}>
             <HStack>
               <Box>
@@ -58,7 +67,7 @@ const Profile = () => {
               <FormLabel>رقم الجوال</FormLabel>
               <Input type="number" />
             </FormControl>
-            
+
             <Stack spacing={10} pt={2}>
               <Button
                 loadingText="Submitting"
@@ -69,15 +78,14 @@ const Profile = () => {
                   bg: "#5E5542",
                 }}
               >
-                تعديل 
+                تعديل
               </Button>
             </Stack>
-                
           </Stack>
         </Box>
       </Stack>
     </Flex>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
